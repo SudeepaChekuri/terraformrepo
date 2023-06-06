@@ -50,13 +50,13 @@ resource "aws_key_pair" "example" {
   
 resource "aws_instance" "terraform_instance1" {
   ami           = var.ec2_ami
-  instance_type = var.instance_type
+  instance_type = var.ec2_instance_type
   key_name      = aws_key_pair.example.key_name
 }
   
 resource "aws_instance" "terraform_instance2" {
   ami           = var.ec2_ami
-  instance_type = var.instance_type
+  instance_type = var.ec2_instance_type
   key_name      = aws_key_pair.example.key_name
   
 }
