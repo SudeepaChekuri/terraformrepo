@@ -49,13 +49,13 @@ resource "aws_key_pair" "example" {
 }
   
 resource "aws_instance" "terraform_instance1" {
-  ami           = var.ami_id
+  ami           = var.ec2_ami
   instance_type = var.instance_type
   key_name      = aws_key_pair.example.key_name
 }
   
 resource "aws_instance" "terraform_instance2" {
-  ami           = var.ami_id
+  ami           = var.ec2_ami
   instance_type = var.instance_type
   key_name      = aws_key_pair.example.key_name
   
@@ -75,12 +75,12 @@ resource "aws_subnet" "my_subnet" {
   cidr_block = var.subnet_cidr_block
 }
 
-resource "aws_instance" "my_instances" {
-  ami           = var.ec2_ami
-  instance_type = var.ec2_instance_type
-  subnet_id     = aws_subnet.my_subnet.id
-  count         = 2
-}
+#resource "aws_instance" "my_instances" {
+ # ami           = var.ec2_ami
+  #instance_type = var.ec2_instance_type
+  #subnet_id     = aws_subnet.my_subnet.id
+  #count         = 2
+#}
 
 output "bucket_name" {
   value = aws_s3_bucket.my_bucket.id
