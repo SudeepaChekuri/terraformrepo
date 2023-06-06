@@ -75,6 +75,12 @@ resource "aws_subnet" "my_subnet" {
   cidr_block = var.subnet_cidr_block
 }
 
+resource "aws_instance" "terraform_instance" {
+  count         = length(var.ec2_ami)
+  ami           = var.ec2_ami[count.index]
+  instance_type = var.ec2_instance_type
+
+
 #resource "aws_instance" "my_instances" {
  # ami           = var.ec2_ami
   #instance_type = var.ec2_instance_type
