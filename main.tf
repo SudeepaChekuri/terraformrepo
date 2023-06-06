@@ -38,7 +38,7 @@ variable "ec2_instance_type" {
 }
 
 
-resource "aws_s3_bucket" "terfbuc" {
+resource "aws_s3_bucket" "my_bucket" {
   bucket = var.s3_bucket_name
   acl    = "private"
 }
@@ -60,7 +60,7 @@ resource "aws_instance" "my_instances" {
 }
 
 output "bucket_name" {
-  value = aws_s3_bucket.terfbuc.id
+  value = aws_s3_bucket.my_bucket.id
 }
 
 output "vpc_id" {
