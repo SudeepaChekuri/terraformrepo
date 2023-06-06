@@ -25,10 +25,10 @@ variable "subnet_cidr_block" {
   default     = "10.0.0.0/24"
 }
 
-variable "ec2_ami" {
-  type        = string
-  description = "EC2 AMI ID"
-  default     = "ami-0607784b46cbe5816"
+  variable "ec2_ami" {
+  type        = list(string)
+  description = "List of EC2 AMI ID's"
+  default     = []
 }
 
 variable "ec2_instance_type" {
