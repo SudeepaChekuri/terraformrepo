@@ -37,9 +37,16 @@ variable "ec2_instance_type" {
   default     = "t2.micro"
 }
 
+variable "public_key" {
+  description = "SSH Public Key"
+  type        = string
+}
+
+
 resource "aws_key_pair" "example" {
   key_name   = "myKP" 
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = var.public_key
+}
   
 resource "aws_instance" "terraform_instance1" {
   ami           = var.ami_id
