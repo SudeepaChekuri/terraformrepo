@@ -26,7 +26,7 @@ jobs:
           terraform_wrapper: false
 
       - name: Terraform init
-        run: terraform init -input=false
+        run: terraform init 
 
       - name: Terraform plan
         run: terraform plan -input=false -var-file=config.yml
