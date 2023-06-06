@@ -18,13 +18,13 @@ jobs:
         with:
           terraform_version: 1.1.0
 
-      - name: Install AWS CLI
-        run: |
-          apt-get update && \
-          apt-get install -y curl unzip && \
-          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-          unzip awscliv2.zip && \
-          sudo ./aws/install
+    #  - name: Install AWS CLI
+     #   run: |
+      #    apt-get update && \
+       #   apt-get install -y curl unzip && \
+        #  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+         # unzip awscliv2.zip && \
+          #sudo ./aws/install
 
       - name: Configure AWS credentials
         run: |
