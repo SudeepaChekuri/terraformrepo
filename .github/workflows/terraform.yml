@@ -18,29 +18,22 @@ jobs:
         with:
           terraform_version: 1.1.0
 
-     
+      - name: Install AWS CLI
+        run: |
+          apt-get update && \
+          apt-get install -y curl unzip && \
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+          unzip awscliv2.zip && \
+          sudo ./aws/install
 
-     aws_access_key: "YOUR_ACCESS_KEY"
-     aws_secret_key: "YOUR_SECRET_KEY"
-     aws_region: "ap-south-1"
-     s3_bucket_name: "terfbuc"
-     vpc_cidr_block: "10.0.0.0/16"
-     subnet_cidr_block: "10.0.0.0/24"
-     ec2_ami: "ami-0607784b46cbe5816"
-     ec2_instance_type: "t2.micro"
-    - run: 
-        terraform_init:
-        command: init
+      - name: Configure AWS credentials
+        run: |
+          echo "${{ secrets.AWS_ACCESS_KEY_ID }}" > ~/.aws/credentials
+          echo "${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
+          aws configure set default.region ${{ secrets.AWS_REGION }}
 
-        terraform_plan:
-        command: plan
-
-        terraform_apply:
-        command: apply -auto-approve
-
-
-     # - name: Run Terraform commands
-      #  run: |
-       #   terraform init -input=false
-        #  terraform plan -input=false -var-file=config.yml
-         # terraform apply -input=false -auto-approve -var-file=config.yml
+      - name: Run Terraform commands
+        run: |
+          terraform init -input=false
+          terraform plan -input=false -var-file=config.yml
+          terraform apply -input=false -auto-approve -var-file=config.yml
