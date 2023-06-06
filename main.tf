@@ -37,7 +37,23 @@ variable "ec2_instance_type" {
   default     = "t2.micro"
 }
 
-
+resource "aws_key_pair" "example" {
+  key_name   = "myKP" 
+  public_key = file("~/.ssh/id_rsa.pub")
+  
+resource "aws_instance" "terraform_instance1" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  key_name      = aws_key_pair.example.key_name
+}
+  
+resource "aws_instance" "terraform_instance2" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  key_name      = aws_key_pair.example.key_name
+  
+}
+  
 resource "aws_s3_bucket" "my_bucket" {
   bucket = var.s3_bucket_name
   acl    = "private"
