@@ -47,20 +47,7 @@ resource "aws_key_pair" "example" {
   key_name   = "myKP" 
   public_key = var.public_key
 }
-  
-resource "aws_instance" "terraform_instance1" {
-  ami           = var.ec2_ami
-  instance_type = var.ec2_instance_type
-  key_name      = aws_key_pair.example.key_name
-}
-  
-resource "aws_instance" "terraform_instance2" {
-  ami           = var.ec2_ami
-  instance_type = var.ec2_instance_type
-  key_name      = aws_key_pair.example.key_name
-  
-}
-  
+   
 resource "aws_s3_bucket" "my_bucket" {
   bucket = var.s3_bucket_name
   acl    = "private"
