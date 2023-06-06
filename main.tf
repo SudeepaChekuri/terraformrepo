@@ -25,12 +25,6 @@ variable "subnet_cidr_block" {
   default     = "10.0.0.0/24"
 }
 
-  variable "ec2_ami" {
-  type        = list(string)
-  description = "List of EC2 AMI ID's"
-  default     = []
-}
-
 variable "ec2_instance_type" {
   type        = string
   description = "EC2 Instance Type"
@@ -40,6 +34,12 @@ variable "ec2_instance_type" {
 variable "public_key" {
   description = "SSH Public Key"
   type        = string
+}
+
+variable "ec2_ami" {
+  type        = list(string)
+  description = "List of EC2 AMI ID's"
+  default     = []
 }
 
 
