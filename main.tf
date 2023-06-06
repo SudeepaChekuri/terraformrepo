@@ -46,7 +46,7 @@ resource "aws_instance" "terraform_instance" {
   count         = length(var.ec2_ami)
   ami           = var.ec2_ami[count.index]
   instance_type = var.ec2_instance_type
-}
+} 
 resource "aws_key_pair" "example" {
   key_name   = "myKP1" 
   public_key = var.public_key
