@@ -1,0 +1,6 @@
+aws_region         = "us-west-2"
+vpc_cidr_block     = "10.0.0.0/16"
+subnet_cidr_block  = "10.0.0.0/24"
+s3_bucket_name     = "my-bucket"
+ec2_ami            = "ami-0123456789abcdef0"
+ec2_instance_type  = "t2.micro"
