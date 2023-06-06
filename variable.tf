@@ -14,13 +14,13 @@ variable "subnet_cidr_block" {
 }
 
 variable "s3_bucket_name" {
-  description = "S3 Bucket Name"
-  default     = "my-bucket"
+  description = "S3 Bucket"
+  default     = "terfbuc"
 }
 
 variable "ec2_ami" {
   description = "EC2 AMI ID"
-  default     = "ami-0123456789abcdef0"
+  default     = "ami-0607784b46cbe5816"
 }
 
 variable "ec2_instance_type" {
