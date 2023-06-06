@@ -60,7 +60,7 @@ resource "aws_instance" "my_instances" {
 }
 
 output "bucket_name" {
-  value = aws_s3_bucket.my_bucket.id
+  value = aws_s3_bucket.terfbuc.id
 }
 
 output "vpc_id" {
