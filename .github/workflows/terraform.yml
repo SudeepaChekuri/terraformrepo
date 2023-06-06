@@ -18,11 +18,21 @@ jobs:
         with:
           terraform_version: 1.1.0
 
+      - name: Install AWS CLI
+        run: |
+          apt-get update && \
+          apt-get install -y curl unzip && \
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+          unzip awscliv2.zip && \
+          sudo ./aws/install
+
       - name: Configure AWS credentials
         run: |
-          echo "${{ secrets.AWS_ACCESS_KEY_ID }}" > ~/.aws/credentials
-          echo "${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
-          aws configure set default.region ${{ secrets.AWS_REGION }}
+          echo "[default]" > aws_credentials
+          echo "aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}" >> aws_credentials
+          echo "aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> aws_credentials
+          echo "region=${{ secrets.AWS_REGION }}" >> aws_credentials
+          export AWS_SHARED_CREDENTIALS_FILE=$(pwd)/aws_credentials
 
       - name: Terraform init
         run: terraform init -input=false
