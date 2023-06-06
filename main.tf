@@ -10,7 +10,7 @@ terraform {
 variable "s3_bucket_name" {
   type        = string
   description = "S3 Bucket Name"
-  default     = "terfbuc"
+  #default     = "terfbuc"
 }
 
 variable "vpc_cidr_block" {
