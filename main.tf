@@ -86,5 +86,5 @@ output "subnet_id" {
 }
 
 output "instance_public_ips" {
-  value = aws_instance.my_instances.*.public_ip
+  value = aws_instance.terraform_instance[*].public_ip
 }
