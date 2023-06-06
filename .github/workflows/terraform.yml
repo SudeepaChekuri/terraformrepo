@@ -26,10 +26,10 @@ jobs:
           terraform_wrapper: false
 
       - name: Terraform init
-        run: terraform init 
+        run: terraform init -input=false
 
       - name: Terraform plan
-        run: terraform plan -input=false -var-file=config.yml
+        run: terraform plan -input=false
 
       - name: Terraform apply
-        run: terraform apply -input=false -auto-approve -var-file=config.yml
+        run: terraform apply -input=false -auto-approve
